@@ -1,0 +1,56 @@
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 7800 Series (ID=0x6819)
+    Vendor:   ATI
+    VRAM:     2026 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.041 seconds
+Platform assembly: E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\Unity\Projects\Lack Of Serenity\LackOfSerenity_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.172559 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.392951 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 242.
+Total: 0.171295 ms (FindLiveObjects: 0.018554 ms CreateObjectMapping: 0.028162 ms MarkObjects: 0.111325 ms  DeleteObjects: 0.012590 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.413493 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 259.
+Total: 0.146777 ms (FindLiveObjects: 0.016566 ms CreateObjectMapping: 0.019879 ms MarkObjects: 0.099728 ms  DeleteObjects: 0.010271 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.408855 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 299.
+Total: 0.173614 ms (FindLiveObjects: 0.018885 ms CreateObjectMapping: 0.034457 ms MarkObjects: 0.107680 ms  DeleteObjects: 0.011596 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.399246 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 299.
+Total: 0.122258 ms (FindLiveObjects: 0.014246 ms CreateObjectMapping: 0.020542 ms MarkObjects: 0.083825 ms  DeleteObjects: 0.003313 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.436686 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 273.
+Total: 0.156716 ms (FindLiveObjects: 0.014578 ms CreateObjectMapping: 0.033795 ms MarkObjects: 0.097409 ms  DeleteObjects: 0.010271 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 193c -> priority: 1 
