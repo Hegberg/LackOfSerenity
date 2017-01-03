@@ -21,7 +21,7 @@ public class Projectile2Script : MonoBehaviour {
         //move
         transform.position += Vector3.Scale(transform.right, movement);
         //check if vonverted to life
-        lifeGained();
+        LifeGained();
     }
 
     //may not be necessary
@@ -30,7 +30,7 @@ public class Projectile2Script : MonoBehaviour {
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), GameObject.Find("Projectile_2(Clone)").GetComponent<Collider2D>());
     }
 
-    void lifeGained()
+    void LifeGained()
     {
         if (Input.GetKeyDown("space") && !PlayerControlScript.control.CheckIfLifeGainedRecently() && (Vector2.Distance(this.transform.position, PlayerControlScript.control.gameObject.transform.position) <= distanceToConvert))
         {

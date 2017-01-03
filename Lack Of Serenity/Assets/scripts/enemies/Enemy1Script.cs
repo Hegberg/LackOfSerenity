@@ -16,8 +16,8 @@ public class Enemy1Script : MonoBehaviour {
     void Start () {
         //start of each level firing this fast, only when enemies die does it speed up
         //first number is delay till repeating starts ,second is delay between firing
-        InvokeRepeating("LaunchProjectile1", firingSpeed1, firingSpeed1);
-        InvokeRepeating("LaunchProjectile2", firingSpeed1 + firingSpeed2, firingSpeed2);
+        InvokeRepeating("LaunchProjectile1", 1, firingSpeed1);
+        InvokeRepeating("LaunchProjectile2", 1 + firingSpeed2, firingSpeed2);
 
         //for levels this is the only enemy so level 1 so far, only have shield
         if (GameControlScript.control.GetCurrentLevel() == 1)
@@ -116,15 +116,15 @@ public class Enemy1Script : MonoBehaviour {
     {
         //cancel earlier invoke, up speed for less enemies
         CancelInvoke();
-        //stop firing speed from going below 0.2f
+        //stop firing speed from going below 0.1f
         if (firingSpeed1 >= 0.4f)
         {
-            firingSpeed1 -= 0.2f;
+            firingSpeed1 -= 0.3f;
         }
-        //stop from going lesss then 2.0f
-        if (firingSpeed2 >= 3.0f)
+        //stop from going lesss then 1.1f
+        if (firingSpeed2 >= 2.4f)
         {
-            firingSpeed2 -= 1.0f;
+            firingSpeed2 -= 1.3f;
         }
         InvokeRepeating("LaunchProjectile1", firingSpeed1, firingSpeed1);
         InvokeRepeating("LaunchProjectile2", firingSpeed1 + firingSpeed2, firingSpeed2);

@@ -66,11 +66,13 @@ public class PlayerControlScript : MonoBehaviour
         }
 
         ///cheat to get full health
+        /*
         if (Input.GetKeyDown("c"))
         {
             lives = 7;
             PlayerHealthScript.control.changedLife(lives);
         }
+        */
     }
 
     public void LifeLost()

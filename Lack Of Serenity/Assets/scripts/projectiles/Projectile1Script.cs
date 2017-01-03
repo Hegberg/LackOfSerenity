@@ -21,10 +21,10 @@ public class Projectile1Script : MonoBehaviour {
         //move
         transform.position += Vector3.Scale(transform.right, movement);
         //check if converted to life of player
-        lifeGained();
+        LifeGained();
     }
 
-    void lifeGained()
+    void LifeGained()
     {
         if (Input.GetKeyDown("space") && !PlayerControlScript.control.CheckIfLifeGainedRecently() && (Vector2.Distance(this.transform.position, PlayerControlScript.control.gameObject.transform.position) <= distanceToConvert))
         {

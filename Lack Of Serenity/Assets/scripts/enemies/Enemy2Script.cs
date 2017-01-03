@@ -10,6 +10,7 @@ public class Enemy2Script : MonoBehaviour {
     int health = 3;
     float firingSpeed = 1.0f;
     float shieldRegenRate = 5.0f;
+    int amountOfShots = 1;
 
     bool goLeft = true;
 
@@ -67,14 +68,7 @@ public class Enemy2Script : MonoBehaviour {
     IEnumerator MoveTimer()
     {
         yield return new WaitForSeconds(1.2f);
-        if (goLeft)
-        {
-            goLeft = false;
-        }
-        else
-        {
-            goLeft = true;
-        }
+        goLeft = !goLeft;
         StartCoroutine(MoveTimer());
     }
 
@@ -105,7 +99,7 @@ public class Enemy2Script : MonoBehaviour {
         }
         else if (health == 1)
         {
-            //enemy 2 dies so 2 spot in list so 1
+            //enemy 2 dies so 2nd spot in list so 1
             GameControlScript.control.EnemyDied(1);
             Destroy(this.gameObject);
         }
@@ -156,6 +150,12 @@ public class Enemy2Script : MonoBehaviour {
         {
             firingSpeed -= 0.2f;
         }
-        InvokeRepeating("LaunchProjectile3", 1, firingSpeed);
+        amountOfShots += 1;
+        //starts firing double and triple shots
+        for (int i = 0; i < amountOfShots; ++i) {
+            //this creates offset so players can see the double.tiple etc shots
+            float j = i * 0.02f;
+            InvokeRepeating("LaunchProjectile3", firingSpeed + j, firingSpeed);
+        }
     }
 }

@@ -88,8 +88,32 @@ public class GameControlScript : MonoBehaviour {
         }
         else if (sceneName == "Level_4")
         {
+            SetLevel(5);
+            LevelStarted();
+            SceneManager.LoadScene("Level_5");
+
+        }
+        else if (sceneName == "Level_5")
+        {
+            SetLevel(6);
+            LevelStarted();
+            SceneManager.LoadScene("Level_6");
+        }
+        else if (sceneName == "Level_6")
+        {
+            SetLevel(7);
+            LevelStarted();
+            SceneManager.LoadScene("Level_7");
+        }
+        else if (sceneName == "Level_7")
+        {
+            SetLevel(8);
+            LevelStarted();
+            SceneManager.LoadScene("Level_8");
+        }
+        else if (sceneName == "Level_8")
+        {
             SceneManager.LoadScene("Main_Menu");
-            //inGame = false;
         }
     }
 
@@ -120,6 +144,30 @@ public class GameControlScript : MonoBehaviour {
             SetLevel(4);
             LevelStarted();
             SceneManager.LoadScene("Level_4");
+        }
+        else if (LevelChosen == 5)
+        {
+            SetLevel(5);
+            LevelStarted();
+            SceneManager.LoadScene("Level_5");
+        }
+        else if (LevelChosen == 6)
+        {
+            SetLevel(6);
+            LevelStarted();
+            SceneManager.LoadScene("Level_6");
+        }
+        else if (LevelChosen == 7)
+        {
+            SetLevel(7);
+            LevelStarted();
+            SceneManager.LoadScene("Level_7");
+        }
+        else if (LevelChosen == 8)
+        {
+            SetLevel(8);
+            LevelStarted();
+            SceneManager.LoadScene("Level_8");
         }
     }
 
@@ -152,10 +200,38 @@ public class GameControlScript : MonoBehaviour {
         else if (currentLevel == 3)
         {
             enemiesAlive[0] = 1;
-            enemiesAlive[1] = 2;
+            enemiesAlive[1] = 0;
             enemiesAlive[2] = 2;
         }
         else if (currentLevel == 4)
+        {
+            enemiesAlive[0] = 1;
+            enemiesAlive[1] = 0;
+            enemiesAlive[2] = 0;
+            enemiesAlive[3] = 2;
+        }
+        else if (currentLevel == 5)
+        {
+            enemiesAlive[0] = 1;
+            enemiesAlive[1] = 2;
+            enemiesAlive[2] = 2;
+            enemiesAlive[3] = 0;
+        }
+        else if (currentLevel == 6)
+        {
+            enemiesAlive[0] = 1;
+            enemiesAlive[1] = 0;
+            enemiesAlive[2] = 2;
+            enemiesAlive[3] = 2;
+        }
+        else if (currentLevel == 7)
+        {
+            enemiesAlive[0] = 1;
+            enemiesAlive[1] = 2;
+            enemiesAlive[2] = 0;
+            enemiesAlive[3] = 2;
+        }
+        else if (currentLevel == 8)
         {
             enemiesAlive[0] = 1;
             enemiesAlive[1] = 2;

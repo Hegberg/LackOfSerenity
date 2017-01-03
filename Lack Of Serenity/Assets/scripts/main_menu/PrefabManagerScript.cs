@@ -15,6 +15,7 @@ public class PrefabManagerScript : MonoBehaviour {
     public Transform Projectile2;
     public Transform Projectile3;
     public Transform Projectile4;
+    public Transform Projectile5;
     public Transform PlayerProjectile1;
 
     public Transform Player;
@@ -35,6 +36,7 @@ public class PrefabManagerScript : MonoBehaviour {
             EnemyProjectiles.Add(Projectile2);
             EnemyProjectiles.Add(Projectile3);
             EnemyProjectiles.Add(Projectile4);
+            EnemyProjectiles.Add(Projectile5);
 
             PlayerProjectiles.Add(PlayerProjectile1);
 

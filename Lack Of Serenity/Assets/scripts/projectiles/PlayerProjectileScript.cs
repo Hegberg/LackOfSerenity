@@ -46,5 +46,15 @@ public class PlayerProjectileScript : MonoBehaviour {
             other.gameObject.GetComponent<Enemy2Script>().Hit();
             Destroy(gameObject);
         }
+        else if (other.gameObject.name == "Enemy3(Clone)")
+        {
+            other.gameObject.GetComponent<Enemy3Script>().Hit();
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.name == "Enemy4(Clone)")
+        {
+            other.gameObject.GetComponent<Enemy4Script>().Hit();
+            Destroy(gameObject);
+        }
     }
 }
