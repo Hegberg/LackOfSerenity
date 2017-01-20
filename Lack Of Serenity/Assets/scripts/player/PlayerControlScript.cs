@@ -10,6 +10,12 @@ public class PlayerControlScript : MonoBehaviour
     private int lives = 1;
     public static PlayerControlScript control;
 
+    public AudioClip fireSound;
+    public AudioClip lifeGainedSound;
+    public AudioClip lifeLostSound;
+
+    bool cheatsEnabled = true;
+
     // Use this for initialization
     void Start()
     {
@@ -48,6 +54,7 @@ public class PlayerControlScript : MonoBehaviour
                 Instantiate(PrefabManagerScript.PlayerProjectiles[0], new Vector3(rigid.transform.position.x, rigid.transform.position.y, 0), Quaternion.identity);
                 lives -= 1;
                 PlayerHealthScript.control.changedLife(lives);
+                GetComponent<AudioSource>().PlayOneShot(fireSound, 1);
             }
 
         }
@@ -66,13 +73,13 @@ public class PlayerControlScript : MonoBehaviour
         }
 
         ///cheat to get full health
-        /*
-        if (Input.GetKeyDown("c"))
+        
+        if (Input.GetKeyDown("c") && cheatsEnabled)
         {
             lives = 7;
             PlayerHealthScript.control.changedLife(lives);
         }
-        */
+        
     }
 
     public void LifeLost()
@@ -82,7 +89,10 @@ public class PlayerControlScript : MonoBehaviour
         {
             Dead();
         }
+
+        //not claaed if player dies
         PlayerHealthScript.control.changedLife(lives);
+        GetComponent<AudioSource>().PlayOneShot(lifeLostSound, 1);
     }
 
     public void LifeGained()
@@ -93,13 +103,14 @@ public class PlayerControlScript : MonoBehaviour
         {
             lives += 1;
             PlayerHealthScript.control.changedLife(lives);
+            GetComponent<AudioSource>().PlayOneShot(lifeGainedSound, 1);
         }
     }
 
     //wait time for life to change back
     IEnumerator LifeConvertWait()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(4);
         lifeGained = false;
     }
 

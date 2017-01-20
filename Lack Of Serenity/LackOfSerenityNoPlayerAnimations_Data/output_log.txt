@@ -1,0 +1,45 @@
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
+    Vendor:   NVIDIA
+    VRAM:     2018 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.043 seconds
+Platform assembly: C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\hegbu\Desktop\Random Projects\LackOfSerenity\Lack Of Serenity\LackOfSerenityNoPlayerAnimations_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.046121 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.312493 ms
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 362.
+Total: 0.124444 ms (FindLiveObjects: 0.033185 ms CreateObjectMapping: 0.015802 ms MarkObjects: 0.066370 ms  DeleteObjects: 0.008296 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.406912 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 362.
+Total: 0.151703 ms (FindLiveObjects: 0.041876 ms CreateObjectMapping: 0.012641 ms MarkObjects: 0.078222 ms  DeleteObjects: 0.018172 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.410073 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 343.
+Total: 0.111407 ms (FindLiveObjects: 0.028839 ms CreateObjectMapping: 0.012641 ms MarkObjects: 0.063209 ms  DeleteObjects: 0.006320 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 310c -> priority: 1 
+  Thread -> id: 1470 -> priority: 1 

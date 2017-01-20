@@ -6,7 +6,6 @@ public class EnemyControllerScript : MonoBehaviour {
     public static EnemyControllerScript control;
     public Transform enemyParent;
 
-
     // Use this for initialization
     void Start () {
         if (control == null)
@@ -19,13 +18,14 @@ public class EnemyControllerScript : MonoBehaviour {
         }
         
         SpawnEnemies();
+        
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+
+    }
 
     public void SpawnEnemies()
     {

@@ -11,9 +11,15 @@ public class GameControlScript : MonoBehaviour {
     //4 is amount of levels in the game, each level has new enemy which takes up new slot in list
     // [0] for enemy 1, [1] for enemy 2, etc
     private List<int> enemiesAlive = new List<int>();
-    //private bool inGame = false;
+    private bool inGame = false;
 
     private int currentLevel;
+
+    public AudioClip mainMenuMusic;
+    public AudioClip inGameMusic;
+    public AudioClip playerDiedSound;
+    
+    private bool playingPlayerDiedSound = false;
 
     // Use this for initialization
     void Start () {
@@ -30,10 +36,78 @@ public class GameControlScript : MonoBehaviour {
             enemiesAlive.Add(0);
         }
 
+        Object.DontDestroyOnLoad(gameObject);
     }
 	
 	// Update is called once per frame
 	void Update () {
+        MusicLoop();
+
+        //Object.DontDestroyOnLoad(gameObject);
+    }
+
+    public void MusicLoop()
+    {
+        //Debug.Log(playingPlayerDiedSound);
+        if (!GetComponent<AudioSource>().isPlaying && !playingPlayerDiedSound)
+        {
+            if (inGame)
+            {
+                GetComponent<AudioSource>().PlayOneShot(inGameMusic, 1);
+            } 
+            else
+            {
+                GetComponent<AudioSource>().PlayOneShot(mainMenuMusic, 1);
+            }
+        }
+    }
+
+    IEnumerator PlayerDiedSoundWait()
+    {
+        //delay until main music restarts
+        yield return new WaitForSeconds(3);
+        playingPlayerDiedSound = false;
+    }
+
+
+    //change music based off changing game state
+    private void ChangeInGame(bool isInGame, bool didPlayerDie = false)
+    {
+        
+        if(inGame && isInGame)
+        {
+            //do nothing, keep playing In Game Music
+        }
+        else if (inGame && !isInGame)
+        {
+            //switch to main menu music and play player death sound first if they died
+            
+            if (didPlayerDie)
+            {
+                GetComponent<AudioSource>().Stop();
+                GetComponent<AudioSource>().PlayOneShot(playerDiedSound, 1);
+
+                //so music doesn't start from the looping function
+                playingPlayerDiedSound = true;
+                StartCoroutine(PlayerDiedSoundWait());
+            }
+            else
+            {
+                GetComponent<AudioSource>().Stop();
+                GetComponent<AudioSource>().PlayOneShot(mainMenuMusic, 1);
+            }
+        }
+        else if (!inGame && isInGame)
+        {
+            //switch to In Game Music
+            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().PlayOneShot(inGameMusic, 1);
+        }
+        else if (!inGame && !isInGame)
+        {
+            //do nothing keep playing menu music
+        }
+        inGame = isInGame;
         
     }
 
@@ -53,6 +127,7 @@ public class GameControlScript : MonoBehaviour {
 
     public void PlayerDefeated()
     {
+        ChangeInGame(false, true);
         SceneManager.LoadScene("Main_Menu");
     }
 
@@ -64,6 +139,7 @@ public class GameControlScript : MonoBehaviour {
     //for when the player beats a stage
     public void ChangeScene()
     {
+        ChangeInGame(true);
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         //set scene and number of enimies in it for each change
@@ -120,6 +196,7 @@ public class GameControlScript : MonoBehaviour {
     //for when choosing level from start screen
     public void ChooseScene(int LevelChosen)
     {
+        ChangeInGame(true);
         //set scene and number of enimies in it for each change
         if (LevelChosen == 1)
         {
