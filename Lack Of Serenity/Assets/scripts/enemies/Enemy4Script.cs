@@ -10,6 +10,8 @@ public class Enemy4Script : MonoBehaviour {
     int health = 3;
     float firingSpeed = 3.0f;
     float shieldRegenRate = 5.0f;
+	//float movementLoopTime = 1f;
+	float pauseMovementTime = 1.3f;
 
     bool goLeft = true;
     bool stopMovement = false;
@@ -66,7 +68,7 @@ public class Enemy4Script : MonoBehaviour {
             transform.localPosition += new Vector3(0.08f, 0, 0);
         }
         loopAmount += 1;
-        if (loopAmount >= 80)
+        if (loopAmount >= 60)
         {
             loopAmount = 0;
             goLeft = !goLeft;
@@ -76,7 +78,7 @@ public class Enemy4Script : MonoBehaviour {
 
     IEnumerator PauseMovement()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(pauseMovementTime);
         stopMovement = false;
     }
 
@@ -121,7 +123,8 @@ public class Enemy4Script : MonoBehaviour {
 
     void LaunchProjectile5()
     {
-        Instantiate(PrefabManagerScript.EnemyProjectiles[4], new Vector3(transform.position.x, transform.position.y - 0.7f, 0), Quaternion.identity);
+		Transform projectile = (Transform) Instantiate(PrefabManagerScript.EnemyProjectiles[4], new Vector3(transform.position.x, transform.position.y - 0.7f, 0), Quaternion.identity);
+		projectile.SetParent (EnemyControllerScript.control.enemyParent.transform);
         stopMovement = true;
         StartCoroutine(PauseMovement());
     }

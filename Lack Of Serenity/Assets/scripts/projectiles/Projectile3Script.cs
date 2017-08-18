@@ -46,7 +46,8 @@ public class Projectile3Script : MonoBehaviour {
     {
         if (other.gameObject.name == "Platform1" || other.gameObject.name == "Platform2" || other.gameObject.name == "Platform3"
             || other.gameObject.name == "Platform4" || other.gameObject.name == "BottomPlatform" || other.gameObject.name == "TopPlatform"
-            || other.gameObject.name == "LeftPlatform" || other.gameObject.name == "RightPlatform")
+            || other.gameObject.name == "LeftPlatform" || other.gameObject.name == "RightPlatform"
+			|| other.gameObject.name == "Lava")
         {
             Destroy(gameObject);
         }

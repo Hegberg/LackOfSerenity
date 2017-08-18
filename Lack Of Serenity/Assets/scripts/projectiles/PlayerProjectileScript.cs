@@ -9,10 +9,10 @@ public class PlayerProjectileScript : MonoBehaviour {
     void Start () {
         Ignore();
 
-        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 dir = pos - Input.mousePosition;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		//faces projectile at mouse pointer
+		Vector3 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		transform.rotation = Quaternion.LookRotation (Vector3.forward, pos - transform.position);
+		transform.Rotate (0, 0, -90);
     }
 	
 	// Update is called once per frame
@@ -32,7 +32,8 @@ public class PlayerProjectileScript : MonoBehaviour {
     {
         if (other.gameObject.name == "Platform1" || other.gameObject.name == "Platform2" || other.gameObject.name == "Platform3"
             || other.gameObject.name == "Platform4" || other.gameObject.name == "BottomPlatform" || other.gameObject.name == "TopPlatform"
-            || other.gameObject.name == "LeftPlatform" || other.gameObject.name == "RightPlatform")
+            || other.gameObject.name == "LeftPlatform" || other.gameObject.name == "RightPlatform"
+			|| other.gameObject.name == "Lava")
         {
             Destroy(gameObject);
         }

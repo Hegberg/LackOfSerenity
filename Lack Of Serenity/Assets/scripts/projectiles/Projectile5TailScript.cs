@@ -28,7 +28,8 @@ public class Projectile5TailScript : MonoBehaviour {
     {
         //goes through the 4 platforms but not through the bottom platform
         if (other.gameObject.name == "BottomPlatform" || other.gameObject.name == "TopPlatform"
-            || other.gameObject.name == "LeftPlatform" || other.gameObject.name == "RightPlatform")
+            || other.gameObject.name == "LeftPlatform" || other.gameObject.name == "RightPlatform"
+			|| other.gameObject.name == "Lava")
         {
             Destroy(gameObject);
         }

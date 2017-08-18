@@ -10,6 +10,7 @@ public class Enemy3Script : MonoBehaviour {
     int health = 3;
     float firingSpeed = 1.0f;
     float shieldRegenRate = 5.0f;
+	float movementLoopTime = 1f;
 
     bool goUp = true;
 
@@ -66,7 +67,7 @@ public class Enemy3Script : MonoBehaviour {
 
     IEnumerator MoveTimer()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(movementLoopTime);
         if (goUp)
         {
             goUp = false;
@@ -119,7 +120,8 @@ public class Enemy3Script : MonoBehaviour {
 
     void LaunchProjectile4()
     {
-        Instantiate(PrefabManagerScript.EnemyProjectiles[3], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+		Transform projectile = (Transform) Instantiate(PrefabManagerScript.EnemyProjectiles[3], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+		projectile.SetParent (EnemyControllerScript.control.enemyParent.transform);
     }
 
     void CheckInvincibility()

@@ -20,7 +20,8 @@ public class Enemy1Script : MonoBehaviour {
         InvokeRepeating("LaunchProjectile2", 1 + firingSpeed2, firingSpeed2);
 
         //for levels this is the only enemy so level 1 so far, only have shield
-        if (GameControlScript.control.GetCurrentLevel() == 1)
+		if (GameControlScript.control.GetCurrentLevel() == 1 
+			|| GameControlScript.control.GetCurrentLevel() == 9 )
         {
             ChangeHealth(2);
         }
@@ -32,7 +33,7 @@ public class Enemy1Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
+		CheckEnviroment ();
 	}
 
     void ChangeHealth(int hp)
@@ -75,8 +76,9 @@ public class Enemy1Script : MonoBehaviour {
 
     void LaunchProjectile1()
     {
-        Instantiate(PrefabManagerScript.EnemyProjectiles[0], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-    }
+		Transform projectile = (Transform) Instantiate(PrefabManagerScript.EnemyProjectiles[0], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+		projectile.SetParent (EnemyControllerScript.control.enemyParent.transform);
+	}
 
     void LaunchProjectile2()
     {
@@ -117,16 +119,28 @@ public class Enemy1Script : MonoBehaviour {
         //cancel earlier invoke, up speed for less enemies
         CancelInvoke();
         //stop firing speed from going below 0.1f
-        if (firingSpeed1 >= 0.4f)
+        if (firingSpeed1 > 0.1f)
         {
-            firingSpeed1 -= 0.3f;
+            firingSpeed1 -= 0.5f;
+			if (firingSpeed1 < 0.1f) {
+				firingSpeed1 = 0.1f;
+			}
         }
         //stop from going lesss then 1.1f
-        if (firingSpeed2 >= 2.4f)
+        if (firingSpeed2 > 1.1f)
         {
-            firingSpeed2 -= 1.3f;
+            firingSpeed2 -= 1.5f;
+			if (firingSpeed2 < 1.1f) {
+				firingSpeed2 = 1.1f;
+			}
         }
         InvokeRepeating("LaunchProjectile1", firingSpeed1, firingSpeed1);
         InvokeRepeating("LaunchProjectile2", firingSpeed1 + firingSpeed2, firingSpeed2);
     }
+
+	private void CheckEnviroment() {
+		if (GameControlScript.control.GetCurrentLevel () == 9) {
+			transform.Translate (GameControlScript.control.GetLavaSpeed ());
+		}
+	}
 }

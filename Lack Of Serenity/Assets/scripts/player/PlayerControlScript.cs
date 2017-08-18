@@ -14,7 +14,14 @@ public class PlayerControlScript : MonoBehaviour
     public AudioClip lifeGainedSound;
     public AudioClip lifeLostSound;
 
+	public Sprite lifeAbsorbOffCooldown;
+	public Sprite lifeAbsorbOnCooldown;
+
+	float waitBetweenGettingMoreLife = 1f;
+
     bool cheatsEnabled = true;
+
+	public Rigidbody2D rb2D;
 
     // Use this for initialization
     void Start()
@@ -27,12 +34,15 @@ public class PlayerControlScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+		rb2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+		CheckEnviroment ();
     }
 
     //when dead return to main menu
@@ -51,7 +61,10 @@ public class PlayerControlScript : MonoBehaviour
             Rigidbody2D rigid = gameObject.GetComponent<Rigidbody2D>();
             if (lives >= 2)
             {
-                Instantiate(PrefabManagerScript.PlayerProjectiles[0], new Vector3(rigid.transform.position.x, rigid.transform.position.y, 0), Quaternion.identity);
+				Transform projectile = (Transform) Instantiate(PrefabManagerScript.PlayerProjectiles[0], new Vector3(rigid.transform.position.x, rigid.transform.position.y, 0), Quaternion.identity);
+				//projectile parent is enemy parent, can't have parent as player
+				//or player movement will affect projectile
+				projectile.SetParent (EnemyControllerScript.control.enemyParent.transform);
                 lives -= 1;
                 PlayerHealthScript.control.changedLife(lives);
                 GetComponent<AudioSource>().PlayOneShot(fireSound, 1);
@@ -73,7 +86,6 @@ public class PlayerControlScript : MonoBehaviour
         }
 
         ///cheat to get full health
-        
         if (Input.GetKeyDown("c") && cheatsEnabled)
         {
             lives = 7;
@@ -85,33 +97,34 @@ public class PlayerControlScript : MonoBehaviour
     public void LifeLost()
     {
         lives -= 1;
-        if (lives == 0)
-        {
-            Dead();
-        }
-
-        //not claaed if player dies
-        PlayerHealthScript.control.changedLife(lives);
-        GetComponent<AudioSource>().PlayOneShot(lifeLostSound, 1);
+		if (lives <= 0) {
+			Dead ();
+		} else {
+			//not played if player dies
+			PlayerHealthScript.control.changedLife(lives);
+			GetComponent<AudioSource>().PlayOneShot(lifeLostSound, 1);
+		}
     }
 
     public void LifeGained()
     {
         lifeGained = true;
         StartCoroutine(LifeConvertWait());
+		GetComponent<AudioSource>().PlayOneShot(lifeGainedSound, 1);
         if (lives < 7)
         {
             lives += 1;
             PlayerHealthScript.control.changedLife(lives);
-            GetComponent<AudioSource>().PlayOneShot(lifeGainedSound, 1);
         }
     }
 
     //wait time for life to change back
     IEnumerator LifeConvertWait()
     {
-        yield return new WaitForSeconds(4);
+		GetComponent<SpriteRenderer>().sprite = lifeAbsorbOnCooldown;
+        yield return new WaitForSeconds(waitBetweenGettingMoreLife);
         lifeGained = false;
+		GetComponent<SpriteRenderer>().sprite = lifeAbsorbOffCooldown;
     }
 
     public bool CheckIfLifeGainedRecently()
@@ -133,16 +146,26 @@ public class PlayerControlScript : MonoBehaviour
         if (rigid.velocity.y == 0)
         {
             rigid.velocity += Vector2.up * 7;
+			//rb2D.AddForce (Vector2.up * 400);
         }
     }
 
     private void MoveLeft()
     {
         transform.Translate(new Vector3(-0.08f, 0, 0));
+		//rb2D.MovePosition (transform.position - new Vector3 (0.08f, rb2D.velocity.y/100));
     }
 
     private void MoveRight()
     {
         transform.Translate(new Vector3(0.08f, 0, 0));
+		//rb2D.MovePosition (transform.position + new Vector3 (0.08f, rb2D.velocity.y/100));
     }
+
+	private void CheckEnviroment() {
+		if ((GameControlScript.control.GetCurrentLevel () == 9) 
+			&& gameObject.GetComponent<Collider2D>().IsTouching(GameControlScript.control.GetLavaCollider())) {
+			Dead ();
+		}
+	}
 }

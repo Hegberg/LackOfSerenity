@@ -11,10 +11,7 @@ public class StartButtonScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("q"))
-        {
-            GameControlScript.control.ChooseScene(1);
-        }
+        
 	}
 
     void OnMouseOver()

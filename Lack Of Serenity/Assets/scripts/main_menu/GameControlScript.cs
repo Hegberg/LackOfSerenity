@@ -21,6 +21,9 @@ public class GameControlScript : MonoBehaviour {
     
     private bool playingPlayerDiedSound = false;
 
+	private Vector2 lavaSpeed = new Vector2 (0, 0.01f);
+	private Collider2D lavaCollider;
+
     // Use this for initialization
     void Start () {
         if (control == null)
@@ -187,8 +190,15 @@ public class GameControlScript : MonoBehaviour {
             LevelStarted();
             SceneManager.LoadScene("Level_8");
         }
-        else if (sceneName == "Level_8")
+		else if (sceneName == "Level_8")
+		{
+			SetLevel(9);
+			LevelStarted();
+			SceneManager.LoadScene("Level_9");
+		}
+        else if (sceneName == "Level_9")
         {
+			ChangeInGame(false);
             SceneManager.LoadScene("Main_Menu");
         }
     }
@@ -246,6 +256,12 @@ public class GameControlScript : MonoBehaviour {
             LevelStarted();
             SceneManager.LoadScene("Level_8");
         }
+		else if (LevelChosen == 9)
+		{
+			SetLevel(9);
+			LevelStarted();
+			SceneManager.LoadScene("Level_9");
+		}
     }
 
     public void EnemyDied(int enemyNumber)
@@ -264,58 +280,12 @@ public class GameControlScript : MonoBehaviour {
         for (int i = 0; i < amountOfEnemyTypes; ++i) {
             enemiesAlive[i] = 0;
         }
-        //set the enemies that are alive manually for each level
-        if (currentLevel == 1)
-        {
-            enemiesAlive[0] = 1;
-        }
-        else if (currentLevel == 2)
-        {
-            enemiesAlive[0] = 1;
-            enemiesAlive[1] = 2;
-        }
-        else if (currentLevel == 3)
-        {
-            enemiesAlive[0] = 1;
-            enemiesAlive[1] = 0;
-            enemiesAlive[2] = 2;
-        }
-        else if (currentLevel == 4)
-        {
-            enemiesAlive[0] = 1;
-            enemiesAlive[1] = 0;
-            enemiesAlive[2] = 0;
-            enemiesAlive[3] = 2;
-        }
-        else if (currentLevel == 5)
-        {
-            enemiesAlive[0] = 1;
-            enemiesAlive[1] = 2;
-            enemiesAlive[2] = 2;
-            enemiesAlive[3] = 0;
-        }
-        else if (currentLevel == 6)
-        {
-            enemiesAlive[0] = 1;
-            enemiesAlive[1] = 0;
-            enemiesAlive[2] = 2;
-            enemiesAlive[3] = 2;
-        }
-        else if (currentLevel == 7)
-        {
-            enemiesAlive[0] = 1;
-            enemiesAlive[1] = 2;
-            enemiesAlive[2] = 0;
-            enemiesAlive[3] = 2;
-        }
-        else if (currentLevel == 8)
-        {
-            enemiesAlive[0] = 1;
-            enemiesAlive[1] = 2;
-            enemiesAlive[2] = 2;
-            enemiesAlive[3] = 2;
-        }
     }
+
+	public void EnemyCreated(int enemyType) {
+		enemiesAlive[enemyType] += 1;
+		//Debug.Log (enemyType + " " + enemyType + " -> " + enemiesAlive [enemyType]);
+	}
 
     public int GetEnemiesAlive(int enemyType)
     {
@@ -340,4 +310,20 @@ public class GameControlScript : MonoBehaviour {
     {
         return amountOfEnemyTypes;
     }
+
+	public Vector2 GetLavaSpeed(){
+		return lavaSpeed;
+	}
+
+	public void SetLavaSpeed(Vector2 tempSpeed) {
+		lavaSpeed = tempSpeed;
+	}
+
+	public Collider2D GetLavaCollider() {
+		return lavaCollider;
+	}
+
+	public void SetLavaCollider(Collider2D newCollider) {
+		lavaCollider = newCollider;
+	}
 }
